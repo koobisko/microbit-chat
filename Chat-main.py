@@ -17,23 +17,18 @@ def channelSelect():
     radio.config(channel=channel, power=7)
     display.show(channel)
     
-# Start the radio module
 radio.on()
 
 channelSelect()
 
-
 while True:
     if button_a.is_pressed():
-        # Get a message from the user
         message = input("#")
-
-        # Send the message
         radio.send(message)
+        
     if button_b.is_pressed():
         channelSelect()
         
-    # Continuously check for an incoming message
     received = radio.receive()
     if received:
         music.BA_DING
